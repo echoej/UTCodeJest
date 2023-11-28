@@ -10,6 +10,12 @@
   width: 100%; /* Full width */
 }
 
+.navbar-border {
+  /* Example style - you can customize this */
+  border-bottom: 1px solid #ceced2;
+}
+
+
 .navbar-brand {
   border-color: #ceced2;
   

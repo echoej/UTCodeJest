@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { UserService } from '../user.service';
@@ -6,7 +6,7 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   activeLink: string = '';
@@ -32,6 +32,21 @@ export class NavbarComponent implements OnInit {
     ).subscribe(() => {
       this.updateActiveState();
     });
+
+    // Call the addNavbarBorder method initially to set the navbar state
+    this.addNavbarBorder();
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  addNavbarBorder() {
+    const navbar = document.querySelector('.navbar') as HTMLElement; // Cast to HTMLElement for type safety
+    if (navbar) { // Check if navbar is not null
+      if (window.pageYOffset > 0) {
+        navbar.classList.add('navbar-border');
+      } else {
+        navbar.classList.remove('navbar-border');
+      }
+    }
   }
 
   updateActiveState() {
