@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../user.service';
 
@@ -9,38 +8,45 @@ import { UserService } from '../user.service';
   templateUrl: './question-detail.component.html',
   styleUrls: ['./question-detail.component.css'],
 })
-export class QuestionDetailComponent {
-  // Added new component for user image
-  userDetails: any;  // Assuming you will set this in ngOnInit
-  userImage: string = '';           // Initialize with an empty string
+export class QuestionDetailComponent implements OnInit {
 
-
+  userDetails: any;
+  userImage: string = '';
   currPost: any;
-
-  liked: boolean = false; // Variable to track whether the button is liked
-  toggleLike(comment: any): void {
-    this.liked = !this.liked;
-    if (this.liked) comment.likes += 1; // Toggle the liked state
-  }
-
-  userComment = ''; // For the new comment input by the user
-  comments: any; // Initialize as an empty array
+  liked: boolean = false;
+  userComment = '';
+  comments: any;
 
   constructor(
     private postService: PostService,
-    private sanitizer: DomSanitizer,
     private http: HttpClient,
     private userService: UserService
   ) {}
 
   ngOnInit() {
+    // Get the user details from the service
+    this.userDetails = this.userService.getUser();
+    console.log('User Details:', this.userDetails);
+
+    // Now that userDetails is set, get the user image
+    if (this.userDetails && this.userDetails.profileImage) {
+        this.userImage = this.userDetails.profileImage;
+    }
     this.currPost = this.postService.getPost();
     this.comments = this.currPost.comment;
-    console.log(this.currPost);
+  }
 
-    // Added new component for user image
-    this.userImage = this.userDetails.profileImage;
+  // Define the toggleLike method
+  toggleLike(comment: any): void {
+    // Assuming 'comment' has a 'liked' property which is a boolean
+    // and a 'likes' property which is a number of likes
+    comment.liked = !comment.liked; // Toggle the liked state of the comment
 
+    if (comment.liked) {
+      comment.likes += 1; // Increment likes if comment is liked
+    } else {
+      comment.likes -= 1; // Decrement likes if comment is unliked
+    }
   }
 
   addComment(): void {
@@ -91,7 +97,4 @@ export class QuestionDetailComponent {
     return 'unknown';
   }
 
-  sanitizedUrl(fileBase64: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(fileBase64);
-  }
 }

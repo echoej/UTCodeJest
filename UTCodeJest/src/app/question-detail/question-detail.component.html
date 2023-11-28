@@ -906,13 +906,13 @@
           {{ currPost.description }}
           <img
             *ngIf="getFileType(currPost.file) === 'image'"
-            [src]="sanitizedUrl(currPost.file)"
+            [src]="currPost.file"
             alt="Image Preview"
           />
 
           <object
             *ngIf="getFileType(currPost.file) === 'pdf'"
-            [data]="sanitizedUrl(currPost.file)"
+            [data]="currPost.file"
             type="application/pdf"
             width="300"
             height="200"
@@ -936,9 +936,9 @@
             Comments
             <div class="makecomment">
               <img 
-              [src]="userImage"
-              alt="profile image for current logged-in user. This image is next to the comment input field."
-              class="circular-image"
+               [src]="userImage"
+                alt="User Image"
+                class="circular-image"
               />
               <form (ngSubmit)="addComment()" class="submit">
                 <input

@@ -37,12 +37,21 @@ export class QuestionComponent implements OnInit {
     private userService: UserService,
     private postService: PostService
   ) {}
+
   ngOnInit(): void {
+    // Get the user details from the service
+    this.userDetails = this.userService.getUser();
+
+    // Now that userDetails is set, get the user image
+    if (this.userDetails && this.userDetails.profileImage) {
+        this.userImage = this.userDetails.profileImage;
+    }
+
+
     console.log(this.userService.getUser());
     let userDetails = this.userService.getUser();
     this.userEmail = this.userService.getUser()?.email;
-    // Added new component for user image
-    this.userImage = this.userDetails.profileImage;
+
     this.userForPosts = {
       email: this.userEmail,
     };
