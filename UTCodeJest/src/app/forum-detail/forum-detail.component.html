@@ -31,7 +31,6 @@
 
         /* NAV BAR */
         body {
-            margin-top: 50px;
             background-color: #EDEDF0;
         }
 
@@ -382,7 +381,7 @@
             padding: 10px 20px; 
             border-radius: 12px; 
             margin-top: 20px; 
-            margin-bottom: 155px;
+            margin-bottom: 165px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             width: calc(55% - 30px); /* Subtract margin from width */
@@ -543,16 +542,30 @@
             width: 100%;
         }
         
-        .topquestion_title{
-            font-family: "montserrat", sans-serif;
-            font-weight: 600;
-            font-style: normal;
-            font-size: 16px;
-            color:#0A192B;
-            text-align: left; 
-            margin-top: 5px; 
-            margin-bottom: 0;
-        }
+        .topquestion_title {
+        font-family: "montserrat", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 16px;
+        color: #0a192b;
+        text-align: left;
+        margin-top: 5px;
+        margin-bottom: 0;
+        display: flex;         /* Align items in a row */
+        align-content: center;   /* Center items vertically */
+        flex-direction: row;   /* This is the default direction and can be omitted */
+      }
+      .topquestion_title img{
+        width: 30px;
+        height: 30px;
+      }
+      .topquestion_title h5 {
+        margin-left: 7px; /* Space between image and text */
+        margin-top: 8px;     /* Remove top margin */
+        margin-bottom: 0;  /* Remove bottom margin */
+        line-height: 1;    /* Adjust line height to match the image height */
+        font-size: small;
+      }
 
         .filter {
             background: #E5E5E9; /* Set the default state background color */
@@ -725,35 +738,43 @@
             margin-right: 10px; /* Adjust as necessary for your layout */
         }
 
-
+        .circular-image {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        cursor: pointer; /* Add cursor pointer to indicate clickable */
+      }
 
     </style>
 
 
 </head>
 
+<app-navbar></app-navbar>
+
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" routerLink="/home">
                 <img src="assets/logo.png" alt="Logo" width="42" height="24" class="d-inline-block align-text-top">
                 UTCodeJest
             </a>
     
-            <!-- Search Bar -->
+           
             <div class="search-bar">
                 <form class="nosubmit">
                   <input class="nosubmit" type="search" placeholder="Search">
                 </form>
             </div>
     
-            <!-- Toggler button for mobile view -->
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
     
-            <!-- Navbar links -->
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -770,7 +791,7 @@
             </div>
         </div>
 
-    </nav>
+    </nav> -->
     
 
     
@@ -847,7 +868,11 @@
                 <div> <!-- This div groups the text and the comment input together -->
                     Comments
                     <div class="makecomment">
-                        <img src="assets/profile.png" alt="profile image for current logged-in user. This image is next to the comment input field." width="30" height="30">
+                        <img 
+                        [src]="userImage"
+                        alt="profile image for current logged-in user. This image is next to the comment input field."
+                        class="circular-image"
+                        />                        
                         <form (ngSubmit)="addComment()" class="submit">
                             <input [(ngModel)]="userComment" name="comment" class="submit" type="text" placeholder="Add your comments">
                             <button type="submit">Post</button>
@@ -897,8 +922,8 @@
             <div class="topquestions_block btn" style="margin-top:0px" href="#" role="button">
                 <div class="topinner_questions_block">
                     <div class="topquestion_title">
-                        <img src="assets/profile4.png" width="30" height="30">
-                        <h5 style="margin-left: 5px; font-size: small;">Problems with num()</h5>
+                        <img src="assets/profile4.png">
+                        <h5>Problems with num()</h5>
                     </div>
                     <div class="topquestion_block">
                         <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Web development</button>
@@ -911,8 +936,8 @@
             <div class="topquestions_block btn" href="#" role="button">
                 <div class="topinner_questions_block">
                     <div class="topquestion_title">
-                        <img src="assets/profile1.png" width="30" height="30">
-                        <h5 style="margin-left: 5px; font-size: small;">Problems with num()</h5>
+                        <img src="assets/profile1.png">
+                        <h5>Problems with num()</h5>
                     </div>
                     <div class="topquestion_block">
                         <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Web development</button>
@@ -925,8 +950,8 @@
             <div class="topquestions_block btn" href="#" role="button">
                 <div class="topinner_questions_block">
                     <div class="topquestion_title">
-                        <img src="assets/david.png" width="30" height="30">
-                        <h5 style="margin-left: 5px; font-size: small;">Problems with num()</h5>
+                        <img src="assets/david.png">
+                        <h5>Problems with num()</h5>
                     </div>
                     <div class="topquestion_block">
                         <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Web development</button>

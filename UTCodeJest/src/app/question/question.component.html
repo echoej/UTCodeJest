@@ -500,8 +500,20 @@
       font-size: 16px;
       color: #0a192b;
       text-align: left;
-      margin-top: 5px;
-      margin-bottom: 0;
+      /* margin-top: 5px; */
+      margin-bottom: 0; display: flex;         /* Align items in a row */
+      align-content: center;   /* Center items vertically */
+      flex-direction: row;   /* This is the default direction and can be omitted */
+    }
+    .question_title img{
+      width: 30px;
+      height: 30px;
+    }
+    .question_title h5 {
+      margin-left: 7px; /* Space between image and text */
+      margin-top: 5px;     /* Remove top margin */
+      margin-bottom: 0;  /* Remove bottom margin */
+      line-height: 1;    /* Adjust line height to match the image height */
     }
 
     .content {
@@ -607,6 +619,20 @@
       text-align: left;
       margin-top: 5px;
       margin-bottom: 0;
+      display: flex;         /* Align items in a row */
+      align-content: center;   /* Center items vertically */
+      flex-direction: row;   /* This is the default direction and can be omitted */
+    }
+    .topquestion_title img{
+      width: 30px;
+      height: 30px;
+    }
+    .topquestion_title h5 {
+      margin-left: 7px; /* Space between image and text */
+      margin-top: 8px;     /* Remove top margin */
+      margin-bottom: 0;  /* Remove bottom margin */
+      line-height: 1;    /* Adjust line height to match the image height */
+      font-size: small;
     }
 
     .filter {
@@ -632,6 +658,14 @@
       background-color: #e3e6ea !important;
       /* Hover state background color */
       border: 1px solid var(--border, #e3e6ea);
+    }
+
+    .circular-image {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      cursor: pointer; /* Add cursor pointer to indicate clickable */
     }
   </style>
 </head>
@@ -719,8 +753,11 @@
     </div>
 
     <div class="block2 float-child">
-      <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-        src="assets/profile.png" alt="profile" width="30" height="30" />
+      <img 
+      [src]="userImage"
+      alt="Icon of a user's profile picture, displaying a profile image for user identification."
+      class="circular-image"
+      />
 
       <button class="post_block btn btn-light mb-2">
         <img src="assets/help.png" alt="Ask" width="15" height="15" class="d-inline-block align-center"
@@ -738,7 +775,7 @@
       <div class="title_container">
         ALL QUESTIONS
         <button class="filter btn btn-light" style="font-size: 14px; border-radius: 10px">
-          View All
+          Filter
         </button>
       </div>
       <hr />
@@ -766,8 +803,8 @@
         <div class="inner_questions_block">
           <div class="question_title">
             <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-              src="assets/profile3.png" width="30" height="30" />
-            <h5 style="margin-left: 5px">Problems with num()</h5>
+              src="assets/profile3.png" />
+            <h5>Problems with num()</h5>
           </div>
           <p class="content">
             I faced problems in adding num() to my sorting function.
@@ -786,8 +823,8 @@
         <div class="inner_questions_block">
           <div class="question_title">
             <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-              src="assets/profile1.png" width="30" height="30" />
-            <h5 style="margin-left: 5px">Problems with num()</h5>
+              src="assets/profile1.png"/>
+            <h5>Problems with num()</h5>
           </div>
           <p class="content">
             I faced problems in adding num() to my sorting function.
@@ -806,8 +843,8 @@
         <div class="inner_questions_block">
           <div class="question_title">
             <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-              src="assets/profile4.png" width="30" height="30" />
-            <h5 style="margin-left: 5px">Problems with num()</h5>
+              src="assets/profile4.png"/>
+            <h5>Problems with num()</h5>
           </div>
           <p class="content">
             I faced problems in adding num() to my sorting function.
@@ -826,8 +863,8 @@
         <div class="inner_questions_block">
           <div class="question_title">
             <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-              src="assets/profile.png" width="30" height="30" />
-            <h5 style="margin-left: 5px">Problems with num()</h5>
+              src="assets/profile.png"/>
+            <h5>Problems with num()</h5>
           </div>
           <p class="content">
             I faced problems in adding num() to my sorting function.
@@ -850,8 +887,8 @@
         <div class="topinner_questions_block">
           <div class="topquestion_title">
             <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-              src="assets/profile4.png" width="30" height="30" />
-            <h5 style="margin-left: 5px; font-size: small">
+              src="assets/profile4.png"/>
+            <h5>
               Problems with num()
             </h5>
           </div>
@@ -871,8 +908,8 @@
         <div class="topinner_questions_block">
           <div class="topquestion_title">
             <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-              src="assets/profile1.png" width="30" height="30" />
-            <h5 style="margin-left: 5px; font-size: small">
+              src="assets/profile1.png"/>
+            <h5>
               Problems with num()
             </h5>
           </div>
@@ -892,8 +929,8 @@
         <div class="topinner_questions_block">
           <div class="topquestion_title">
             <img alt="Icon of a user's profile picture, displaying a profile image for user identification."
-              src="assets/david.png" width="30" height="30" />
-            <h5 style="margin-left: 5px; font-size: small">
+              src="assets/david.png"/>
+            <h5>
               Problems with num()
             </h5>
           </div>

@@ -8,7 +8,7 @@ declare const $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   postTitle = '';
@@ -19,6 +19,11 @@ export class HomeComponent implements OnInit {
   modal: any;
   dropdown: any; // Declare the modal property
   base64String: any;
+
+  // Added new component for user image
+  userDetails: any;  // Assuming you will set this in ngOnInit
+  userImage: string = '';           // Initialize with an empty string
+
   userEmail: any;
   allPosts: any;
   userForPosts: any;
@@ -34,6 +39,9 @@ export class HomeComponent implements OnInit {
     console.log(this.userService.getUser());
     let userDetails = this.userService.getUser();
     this.userEmail = this.userService.getUser()?.email;
+
+    // Added new component for user image
+    this.userImage = this.userDetails.profileImage;
 
     this.userForPosts = {
       email: this.userEmail,

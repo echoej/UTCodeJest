@@ -448,8 +448,21 @@
         font-size: 16px;
         color: #0a192b;
         text-align: left;
-        margin-top: 5px;
+        /* margin-top: 5px; */
         margin-bottom: 0;
+        display: flex;         /* Align items in a row */
+        align-content: center;   /* Center items vertically */
+        flex-direction: row;   /* This is the default direction and can be omitted */
+      }
+      .question_title img{
+        width: 30px;
+        height: 30px;
+      }
+      .question_title h5 {
+        margin-left: 7px; /* Space between image and text */
+        margin-top: 5px;     /* Remove top margin */
+        margin-bottom: 0;  /* Remove bottom margin */
+        line-height: 1;    /* Adjust line height to match the image height */
       }
 
       .content {
@@ -547,7 +560,23 @@
         text-align: left;
         margin-top: 5px;
         margin-bottom: 0;
+        display: flex;         /* Align items in a row */
+        align-content: center;   /* Center items vertically */
+        flex-direction: row;   /* This is the default direction and can be omitted */
       }
+      .topquestion_title img{
+        width: 30px;
+        height: 30px;
+      }
+
+      .topquestion_title h5 {
+        margin-left: 7px; /* Space between image and text */
+        margin-top: 8px;     /* Remove top margin */
+        margin-bottom: 0;  /* Remove bottom margin */
+        line-height: 1;    /* Adjust line height to match the image height */
+        font-size: small;
+      }
+
 
       .filter {
         background: #e5e5e9; /* Set the default state background color */
@@ -725,6 +754,16 @@
       .comments_block2 {
         margin-right: 10px; /* Adjust as necessary for your layout */
       }
+
+      .circular-image {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        cursor: pointer; /* Add cursor pointer to indicate clickable */
+      }
+
+
     </style>
   </head>
   <app-navbar></app-navbar>
@@ -896,11 +935,10 @@
             <!-- This div groups the text and the comment input together -->
             Comments
             <div class="makecomment">
-              <img
-                src="assets/profile.png"
-                alt="profile image for current logged-in user. This image is next to the comment input field."
-                width="30"
-                height="30"
+              <img 
+              [src]="userImage"
+              alt="profile image for current logged-in user. This image is next to the comment input field."
+              class="circular-image"
               />
               <form (ngSubmit)="addComment()" class="submit">
                 <input
@@ -962,10 +1000,9 @@
               <img
                 src="assets/profile4.png"
                 alt="profile image of user4. User4's question is selected as top questions. The question title is on the right to the image."
-                width="30"
-                height="30"
+
               />
-              <h5 style="margin-left: 5px; font-size: small">
+              <h5>
                 Problems with num()
               </h5>
             </div>
@@ -993,10 +1030,9 @@
               <img
                 src="assets/profile1.png"
                 alt="profile image of user1. User1's question is selected as top questions. The question title is on the right to the image."
-                width="30"
-                height="30"
+
               />
-              <h5 style="margin-left: 5px; font-size: small">
+              <h5>
                 Problems with num()
               </h5>
             </div>
@@ -1024,10 +1060,9 @@
               <img
                 src="assets/david.png"
                 alt="profile image of david. David's question is selected as top questions. The question title is on the right to the image."
-                width="30"
-                height="30"
+
               />
-              <h5 style="margin-left: 5px; font-size: small">
+              <h5>
                 Problems with num()
               </h5>
             </div>

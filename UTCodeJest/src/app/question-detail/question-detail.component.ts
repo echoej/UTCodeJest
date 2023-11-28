@@ -10,6 +10,11 @@ import { UserService } from '../user.service';
   styleUrls: ['./question-detail.component.css'],
 })
 export class QuestionDetailComponent {
+  // Added new component for user image
+  userDetails: any;  // Assuming you will set this in ngOnInit
+  userImage: string = '';           // Initialize with an empty string
+
+
   currPost: any;
 
   liked: boolean = false; // Variable to track whether the button is liked
@@ -32,6 +37,10 @@ export class QuestionDetailComponent {
     this.currPost = this.postService.getPost();
     this.comments = this.currPost.comment;
     console.log(this.currPost);
+
+    // Added new component for user image
+    this.userImage = this.userDetails.profileImage;
+
   }
 
   addComment(): void {
@@ -43,7 +52,7 @@ export class QuestionDetailComponent {
         user: userDetails,
         name: userDetails?.name,
         postId: this.currPost._id,
-        likes: 0,
+        likes: 0
       };
 
       this.http

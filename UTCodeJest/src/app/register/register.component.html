@@ -18,24 +18,13 @@
 
     <style>
       body {
+        margin-top: -1%;
         background-color: #fffbfc;
       }
       .navbar {
         background-color: #fffbfc;
         height: auto;
-        padding: 25px 21px;
-      }
-      .navbar-brand {
-        background-color: #fffbfc;
-        border-color: #ceced2;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        text-align: center;
-        margin: 14px 0;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 400;
-        font-size: 24px;
+        padding: 0px 21px;
       }
       .btn-primary {
         background-color: #e5e5e9;
@@ -54,12 +43,17 @@
       .container {
         width: 1000px;
         height: auto;
-        margin-top: 50px;
+        /* margin-top: 50px; */
         margin-bottom: 10px;
         font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
       }
       .form-label {
-        font-family: "Montserrat", sans-serif;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
       .form-box {
         border: 1px solid #ced4da;
@@ -69,6 +63,8 @@
         height: 100%;
         width: 478px;
         font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
       .bottom-images {
         justify-content: space-between;
@@ -87,8 +83,6 @@
       .navbar {
         background-color: #fffbfc;
         height: auto;
-        padding-top: 25px;
-        padding-bottom: 25px;
         padding-left: 21px;
         padding-right: 21px;
       }
@@ -100,8 +94,7 @@
         width: 100%;
         left: 0;
         text-align: center;
-        margin-bottom: 14px;
-        margin-top: 14px;
+        margin: 14px 0;
         font-family: "montserrat", sans-serif;
         font-weight: 400;
         font-style: normal;
@@ -117,8 +110,8 @@
           <img
             alt="Logo"
             class="d-inline-block align-text-top"
-            height="24"
-            src="assets/logo.png"
+            height="30"
+            src="assets/logo1.png"
             width="42"
           />
           UTCodeJest
@@ -130,7 +123,7 @@
         <div class="col-md-6">
           <div class="form-box">
             <div class="mb-3 text-center">
-              <h2 style="font-size: 32px; margin: 32px 0">Sign Up</h2>
+              <h2 style="font-size: 32px; margin: 25px 0">Sign Up</h2>
             </div>
             <form
               (ngSubmit)="onSignUp($event)"

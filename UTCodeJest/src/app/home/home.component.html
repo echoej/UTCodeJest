@@ -240,7 +240,7 @@
                  overflow-x: hidden;
                }
 
-               < !-- MY UPDATES-->.float-container {
+               <!-- MY UPDATES-->.float-container {
                  display: flex;
                  position: relative;
                  flex-direction: row;
@@ -492,9 +492,22 @@
                  font-size: 16px;
                  color: #0a192b;
                  text-align: left;
-                 margin-top: 5px;
+                 /* margin-top: 5px; */
                  margin-bottom: 0;
+                 display: flex;         /* Align items in a row */
+                 align-content: center;   /* Center items vertically */
+                 flex-direction: row;   /* This is the default direction and can be omitted */
                }
+               .question_title img{
+                width: 30px;
+                height: 30px;
+               }
+               .question_title h5 {
+                margin-left: 7px; /* Space between image and text */
+                margin-top: 5px;     /* Remove top margin */
+                margin-bottom: 0;  /* Remove bottom margin */
+                line-height: 1;    /* Adjust line height to match the image height */
+              }
 
                .content {
                  margin-top: 12px;
@@ -585,8 +598,18 @@
                  margin-bottom: 5px;
                  display: flex;
                  align-items: center;
-                 /* This will vertically center align the image and the text */
+                 flex-direction: row;   /* This is the default direction and can be omitted */
                }
+               .discussion_title img{
+                width: 30px;
+                height: 30px;
+               }
+               .discussion_title h5 {
+                margin-left: 7px; /* Space between image and text */
+                margin-top: 5px;     /* Remove top margin */
+                margin-bottom: 0;  /* Remove bottom margin */
+                line-height: 1;    /* Adjust line height to match the image height */
+              }
 
                /* For responsive images */
                .inner_discussions_block img {
@@ -794,10 +817,16 @@
                }
 
                .file-upload {
-                 style="font-size: 14px;
-            border-radius: 10px";
-
+                font-size: 14px;
+                border-radius: 10px;
                }
+               .circular-image {
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                object-fit: cover;
+                cursor: pointer; /* Add cursor pointer to indicate clickable */
+              }
     </style>
   </head>
   <app-navbar></app-navbar>
@@ -906,7 +935,11 @@
       </div>
 
       <div class="block2 float-child">
-        <img src="assets/profile.png" alt="profile" width="30" height="30" />
+        <img 
+        [src]="userImage"
+        alt="profile"
+        class="circular-image"
+        />
 
         <button
           id="AskQuestion"
@@ -1306,6 +1339,7 @@
           <button
             class="filter btn btn-light"
             style="font-size: 14px; border-radius: 10px"
+            routerLink="/question"
           >
             View All
           </button>
@@ -1325,10 +1359,12 @@
               <img
                 class="col-md-1 px-4"
                 src="assets/david.png"
-                width="30"
-                height="30"
-              />
-              <h5 class="col-md-10 p-1" style="margin-left: 5px">
+              /> 
+              <!-- width="30"
+              height="30" -->
+
+              <h5 class="col-md-10 p-1"> 
+                <!-- style="margin-left: 5px"> -->
                 {{ post.title }}
               </h5>
             </div>
@@ -1380,8 +1416,8 @@
               height="118"
             />
             <div class="discussion_title">
-              <img src="assets/profile3.png" width="30" height="30" />
-              <h5 style="margin-left: 5px">Bootstrap Alternatives 2023</h5>
+              <img src="assets/profile3.png"/>
+              <h5>Bootstrap Alternatives 2023</h5>
             </div>
           </div>
         </button>
@@ -1393,8 +1429,8 @@
           <div class="inner_discussions_block">
             <img src="assets/amazon.png" alt="Logo" width="500" height="118" />
             <div class="discussion_title">
-              <img src="assets/profile4.png" width="30" height="30" />
-              <h5 style="margin-left: 5px">Amazon Job Openings</h5>
+              <img src="assets/profile4.png"/>
+              <h5>Amazon Job Openings</h5>
             </div>
           </div>
         </button>
@@ -1406,8 +1442,8 @@
           <div class="inner_discussions_block">
             <img src="assets/css.png" alt="Logo" width="500" height="150" />
             <div class="discussion_title">
-              <img src="assets/profile1.png" width="30" height="30" />
-              <h5 style="margin-left: 5px">VS CODE HTML & CSS Tips</h5>
+              <img src="assets/profile1.png"/>
+              <h5>VS CODE HTML & CSS Tips</h5>
             </div>
           </div>
         </button>
